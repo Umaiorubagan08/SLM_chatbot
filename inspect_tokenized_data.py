@@ -8,7 +8,7 @@ tokenizer = AutoTokenizer.from_pretrained("models/tinyllama")
 transcript_dir = "data/transcripts"
 transcript_files = sorted([f for f in os.listdir(transcript_dir) if f.endswith(".txt")])
 
-# loop through each transcript
+# loop through each transcript - audio
 for filename in transcript_files:
     file_path = os.path.join(transcript_dir, filename)
     with open(file_path, "r", encoding="utf-8") as f:
@@ -18,7 +18,7 @@ for filename in transcript_files:
     print("Original Text:")
     print(text[:300] + ("..." if len(text) > 300 else ""))  # Preview first 300 chars
 
-    # tokenize
+    # tokenize section
     tokens = tokenizer.tokenize(text)
     input_ids = tokenizer.encode(text)
 
