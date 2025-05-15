@@ -4,7 +4,6 @@ import re
 
 
 def extract_info(text):
-    # Basic pattern matching for demo; refine as needed
     name = re.search(r"\b(?:I'm|I am)\s+([A-Za-z]+)", text)
     budget = re.search(r"(\d+\s?(lakh|lakhs|crore))", text, re.IGNORECASE)
     property_type = re.search(r"\b(plot|apartment|flat|villa|land)\b", text, re.IGNORECASE)
@@ -29,7 +28,7 @@ def main():
                 text = f.read()
                 structured_data.append(extract_info(text))
 
-    # Save to JSON
+    # save JSON
     with open("data/structured_data.json", "w", encoding="utf-8") as out:
         json.dump(structured_data, out, indent=4)
 
