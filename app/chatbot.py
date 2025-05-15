@@ -19,12 +19,12 @@ def search_structured_data(prompt):
     return None
 
 def generate_response(prompt, chat_history=[]):
-    # First, try to match with structured data
+    # First, try to match with structured data using later i will try to feed in SLM
     data_response = search_structured_data(prompt)
     if data_response:
         return data_response
 
-    # Fallback to SLM model
+    # SLM model
     input_text = "\n".join(chat_history + [prompt])
     inputs = tokenizer.encode(input_text, return_tensors="pt", truncation=True, max_length=512)
     outputs = model.generate(inputs, max_length=512, pad_token_id=tokenizer.eos_token_id)
